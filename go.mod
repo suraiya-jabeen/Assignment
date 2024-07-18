@@ -1,3 +1,3 @@
-module github.com/sojoudian/SimpleAPIServer
+module assignment5
 
 go 1.22.3
