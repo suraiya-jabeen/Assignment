@@ -1,5 +1,11 @@
-For this, I used Git to clone the repository from https://github.com/suraiya-jabeen/Week_Group_Assignment5.git. Then I launched the Visual Studio code terminal, and then I used the cd command to move to the directory folder. I wrote run the go run main. go command to proceed.
+For this, I used Git to clone the repository from https://github.com/suraiya-jabeen/Week_Group_Assignment5.git. Then I launched the Visual Studio code terminal, and then I used the cd command to move to the directory folder. I wrote run the go run main.go command to proceed. Two files that i have added
 
-what is needed!
+.substract.go file has substract code for substract function
+.substract_test.go file has test cases to check 
 
-In case you haven't done so, install Go on your computer. A new directory called Week4_go_assignment should be created. Launch Command Prompt and use cd to get to the Week4_go_assignment folder. Create a Go file called "main.go" that has the welcome you want. Run the go-run main.go Command to see how your greeting is received. 
+Here are the outputs
+PS C:\Users\surai\OneDrive\Desktop\Software Quality and Testing\Week 12\Week_Group_Assignment5> go test -v
+=== RUN   TestSubstract
+--- PASS: TestSubstract (0.00s)
+PASS
+ok     
