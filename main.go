@@ -1,31 +1,32 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"log"
-	"net/http"
+	"os"
+	"strings"
 )
 
-func homeHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.NotFound(w, r)
+// CountSubstring counts the number of occurrences of substring `sub` in string `s`.
+func CountSubstring(s, sub string) int {
+	count := 0
+	for i := strings.Index(s, sub); i != -1; i = strings.Index(s, sub) {
+		count++
+		s = s[i+len(sub):]
 	}
-	fmt.Fprintln(w, "Welcome to the Go API Server!")
+	return count
 }
 
-func aboutHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "This is the About page.")
-}
-
-// go mod init github.com/sojoudian/SimpleAPIServer
 func main() {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", homeHandler)
-	mux.HandleFunc("/about", aboutHandler)
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Enter the main string: ")
+	mainStr, _ := reader.ReadString('\n')
+	mainStr = strings.TrimSpace(mainStr)
 
-	log.Println("Starting server on :3001")
-	err := http.ListenAndServe(":3001", mux)
-	if err != nil {
-		log.Fatalf("Error starting server: %s\n", err)
-	}
+	fmt.Print("Enter the substring: ")
+	subStr, _ := reader.ReadString('\n')
+	subStr = strings.TrimSpace(subStr)
+
+	count := CountSubstring(mainStr, subStr)
+	fmt.Printf("The substring '%s' appears %d times in the string '%s'.\n", subStr, count, mainStr)
 }
